@@ -58,8 +58,8 @@ export const ResetStyles = css`
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 16px;
+    line-height: 20px;
   }
   body {
     ${css([resetSpacing])};
@@ -105,6 +105,7 @@ export const ResetStyles = css`
     ${css([resetSpacing])};
   }
   li {
+    list-style-type: none;
     line-height: initial;
   }
   em {
