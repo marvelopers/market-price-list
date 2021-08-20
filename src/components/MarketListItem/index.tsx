@@ -15,14 +15,16 @@ const MarketListItem = () => {
 
   return (
     <Wrapper>
-      1.아이콘 2.name 2.
       <IconWrapper onClick={handleClick}>
         <StarIcon selected={selected} />
       </IconWrapper>
       <CoinName text="conin" />
       <CoinName text="conin" />
+      <Price currency="usd" num={19000} />
       <Percentage num={19} />
-      <Price num={19000} />
+      <Percentage num={-19} />
+      <Percentage num={19} />
+      <Price currency="krw" num={19000} />
     </Wrapper>
   );
 };
@@ -32,6 +34,12 @@ export default MarketListItem;
 const Wrapper = styled.li`
   height: 40px;
   border: 1px solid purple;
+  /* display: grid; */
+
+  div {
+    display: inline-block;
+    min-width: 150px;
+  }
 `;
 
 const IconWrapper = styled.button``;

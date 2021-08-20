@@ -10,5 +10,5 @@ export default CoinName;
 
 const StyleText = styled.div`
   font-size: 1rem;
-  border: 1px solid pink;
+  min-width: 300px;
 `;

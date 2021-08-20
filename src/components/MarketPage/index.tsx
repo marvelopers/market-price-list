@@ -2,10 +2,12 @@ import React from 'react';
 import styled from '@emotion/styled';
 import MarketListItem from '../MarketListItem';
 import SelectCurrency from '../SelectCurrency';
+import MarketList from '../MarketList';
 
 const PricePage = () => (
   <Wrapper>
     <SelectCurrency />
+    <MarketList />
     <MarketListItem />
   </Wrapper>
 );
