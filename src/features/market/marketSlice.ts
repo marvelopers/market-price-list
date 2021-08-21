@@ -95,6 +95,13 @@ const MarketSlice = createSlice({
   name: 'Market',
   initialState,
   reducers: {
+    changeCurrency: {
+      reducer: (state, action: PayloadAction<CurrencyType>) => {
+        state.params.vs_currency = action.payload;
+        state.params.page = 1;
+      },
+      prepare: (currency: CurrencyType) => ({ payload: currency }),
+    },
     likeCoin: {
       reducer: (state, action: PayloadAction<CoinType>) => {
         state.LikeCoin = [...state.LikeCoin, action.payload];
