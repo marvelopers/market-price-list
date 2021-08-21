@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { ModalType, ModalParams } from 'src/constants/modal';
 import { ModalEventHandler, ModalHandler } from 'src/utils/ModalHandler';
+import AlertModal from './AlertModal';
 import InfoModal from './InfoModal';
 
 export const ModalController = () => {
@@ -43,6 +44,12 @@ export const ModalController = () => {
 
   return (
     <>
+      <AlertModal
+        isModalOpen={isOpened(ModalType.Alert)}
+        backgroundColor="rgba(255,255,255,0.4)"
+        modalParams={modalParams[ModalType.Alert]}
+        clearModalParams={handleClearParams}
+      />
       <InfoModal
         isModalOpen={isOpened(ModalType.Info)}
         modalParams={modalParams[ModalType.Info]}
