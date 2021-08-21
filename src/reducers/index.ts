@@ -1,13 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import MarketSlice, { MarketState } from 'src/features/market/marketSlice';
 
-// TODO: 모델로 이사
-interface CoinMarket {
-  market: MarketState;
-}
-
 export interface State {
-  coinMarket: CoinMarket;
+  market: MarketState;
 }
 
 export const rootReducer = combineReducers({
