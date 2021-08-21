@@ -1,4 +1,4 @@
-export const enum ModalType {
+export enum ModalType {
   Alert = 'Alert',
   Info = 'Info',
 }
