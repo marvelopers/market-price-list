@@ -1,27 +1,27 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
-import { ModalType } from 'src/constants/modal';
-import { ModalHandler } from 'src/utils/ModalHandler';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrencyType, selectMarketPrice, selectParams } from 'src/selectors/market';
+import { getMarketPrice } from 'src/features/market/marketSlice';
+import { CoinType } from 'src/model/market';
 import MarketListItem from '../MarketListItem';
-import CoinName from '../CoinName';
 import MarketListHead from '../MarketListHead';
 
 const MarketList = () => {
-  const handleClickCoinName = (coinName: string) => {
-    ModalHandler.show(ModalType.Info, {
-      title: `${coinName}`,
-      contents: <CoinName text="coin" />,
-    });
-  };
-  useEffect(() => handleClickCoinName('coin'), []);
+  const dispatch = useDispatch();
+  const params = useSelector(selectParams);
+  const MarketPrice = useSelector(selectMarketPrice);
+  const currencyType = useSelector(selectCurrencyType);
+
+  useEffect(() => {
+    dispatch(getMarketPrice(params));
+  }, [dispatch, params]);
+
   return (
     <Wrapper>
-      <button type="button" onClick={() => handleClickCoinName('coin')}>
-        ************
-      </button>
       <MarketListHead />
-      {[0, 1, 2, 3, 4, 5].map((key) => (
-        <MarketListItem key={key} />
+      {MarketPrice.map((coinPrice: CoinType) => (
+        <MarketListItem key={coinPrice.id} coin={coinPrice} currency={currencyType} />
       ))}
     </Wrapper>
   );

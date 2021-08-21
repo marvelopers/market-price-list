@@ -3,8 +3,12 @@ import styled from '@emotion/styled';
 
 interface CoinNameProps {
   text: string;
+  onClickCoinName?: (coin: string) => void;
 }
-const CoinName = ({ text }: CoinNameProps) => <StyleText>{text}</StyleText>;
+
+const CoinName = ({ text, onClickCoinName }: CoinNameProps) => (
+  <StyleText onClick={() => onClickCoinName?.(text)}>{text}</StyleText>
+);
 
 export default CoinName;
 

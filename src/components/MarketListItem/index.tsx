@@ -1,31 +1,50 @@
 import React, { useState } from 'react';
-
 import styled from '@emotion/styled';
+import { CoinType } from 'src/model/market';
+import { ModalHandler } from 'src/utils/ModalHandler';
+import { ModalType } from 'src/constants/modal';
+import { CurrencyType } from 'src/constants/currency';
+import { useDispatch } from 'react-redux';
+import { getCoinInfo, MarketPriceActions } from 'src/features/market/marketSlice';
 import CoinName from '../CoinName';
 import Percentage from '../Percentage';
 import Price from '../Price';
 import StarIcon from '../icons/StarIcon';
 import { Button } from '../common/Button';
 
-const MarketListItem = () => {
+interface MarketListItemProps {
+  coin: CoinType;
+  currency: CurrencyType;
+}
+const MarketListItem = ({ coin, currency }: MarketListItemProps) => {
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState(false);
 
-  const handleClick = () => {
+  const handleClickLike = () => {
     setSelected(!selected);
+    dispatch(MarketPriceActions.likeCoin(coin));
+  };
+
+  const handleClickCoinName = (coinName: string) => {
+    dispatch(getCoinInfo(coinName));
+    ModalHandler.show(ModalType.Info, {
+      title: `${coinName}`,
+      contents: <CoinName text="coin" />,
+    });
   };
 
   return (
     <Wrapper>
-      <IconWrapper onClick={handleClick}>
+      <IconWrapper onClick={handleClickLike}>
         <StarIcon selected={selected} />
       </IconWrapper>
-      <CoinName text="conin" />
-      <CoinName text="conin" />
-      <Price currency="usd" num={19000} />
-      <Percentage num={19} />
-      <Percentage num={-19} />
-      <Percentage num={19} />
-      <Price currency="krw" num={19000} />
+      <CoinName text={coin.id} onClickCoinName={handleClickCoinName} />
+      <CoinName text={coin.symbol} />
+      <Price currency={currency} num={coin.current_price} />
+      <Percentage num={coin.price_change_percentage_1h_in_currency} />
+      <Percentage num={coin.price_change_percentage_24h_in_currency} />
+      <Percentage num={coin.price_change_percentage_7d_in_currency} />
+      <Price currency={currency} num={coin.total_volume} />
     </Wrapper>
   );
 };
