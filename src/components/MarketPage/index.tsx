@@ -1,14 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import MarketListItem from '../MarketListItem';
-import SelectCurrency from '../SelectCurrency';
-import MarketList from '../MarketList';
+import ListTab from '../ListTab';
 
 const PricePage = () => (
   <Wrapper>
-    <SelectCurrency />
-    <MarketList />
-    <MarketListItem />
+    <ListTab />
   </Wrapper>
 );
 
@@ -16,4 +12,6 @@ export default PricePage;
 
 const Wrapper = styled.div`
   border: 1px solid pink;
+  max-width: 1280px;
+  margin: auto;
 `;

@@ -5,6 +5,7 @@ import CoinName from '../CoinName';
 import Percentage from '../Percentage';
 import Price from '../Price';
 import StarIcon from '../icons/StarIcon';
+import { Button } from '../common/Button';
 
 const MarketListItem = () => {
   const [selected, setSelected] = useState(false);
@@ -42,7 +43,9 @@ const Wrapper = styled.li`
   }
 `;
 
-const IconWrapper = styled.button``;
+const IconWrapper = styled(Button)`
+  display: inline-block;
+`;
 
 // {
 //   "id": "bitcoin",

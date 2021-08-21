@@ -4,6 +4,7 @@ import { ModalType } from 'src/constants/modal';
 import { ModalHandler } from 'src/utils/ModalHandler';
 import MarketListItem from '../MarketListItem';
 import CoinName from '../CoinName';
+import MarketListHead from '../MarketListHead';
 
 const MarketList = () => {
   const handleClickCoinName = (coinName: string) => {
@@ -18,6 +19,7 @@ const MarketList = () => {
       <button type="button" onClick={() => handleClickCoinName('coin')}>
         ************
       </button>
+      <MarketListHead />
       {[0, 1, 2, 3, 4, 5].map((key) => (
         <MarketListItem key={key} />
       ))}
