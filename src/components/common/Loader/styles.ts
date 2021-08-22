@@ -1,19 +1,22 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
-import { KORBIT_SKY_BLUE } from 'src/styles/colors';
+import { css, keyframes } from '@emotion/react';
+import { KORBIT_SKY_BLUE, WHITE_BACKGROUND_RGB } from 'src/styles/colors';
+import { ZIndex } from 'src/styles/zIndex';
+import { LoaderProps } from 'src/components/common/Loader';
 
-const Loader = () => (
-  <StyledBallsSpinner>
-    <div className="col">
-      <div className="space ball" />
-      <div className="space ball" />
-      <div className="space ball" />
-    </div>
-  </StyledBallsSpinner>
+export const LoaderWrapper = styled.div(
+  ({ position }: LoaderProps) => css`
+    width: 100%;
+    height: 100%;
+    position: ${position};
+    /* absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: ${WHITE_BACKGROUND_RGB};
+    z-index: ${ZIndex.LoaderBackground};
+  `,
 );
-
-export default Loader;
 
 const spScaleAlpha = keyframes`
 	0% { opacity: 1; }
@@ -33,16 +36,15 @@ const spScaleAlphaAfter = keyframes`
 	66% { opacity: 1; }
 	100% { opacity: 0.25; }
 `;
-const StyledBallsSpinner = styled.div`
+
+export const Loader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: 10px;
 
-  .col {
-    padding: 10px;
-  }
   .ball {
     border-radius: 50%;
     background-color: ${KORBIT_SKY_BLUE};
