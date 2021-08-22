@@ -24,18 +24,14 @@ yarn start
 - emotion/react: 11.4.1
 - emotion/styled: 11.3.0
 - reduxjs/toolkit: 1.6.1
-  // 상태관리 라이브러리로 action과 reducer를 한 번에 정의할 수 있고 Immer가 내장되어 있는 redux-toolkit 사용
-- qs : 6.10.1 // API 통신 시 파라미터 객체를 쿼리 문자열변환하기 위해 사용
+  상태관리 라이브러리로 action과 reducer를 한 번에 정의할 수 있고 Immer가 내장되어 있는 redux-toolkit 사용
+- qs : 6.10.1
+  API 통신 시 파라미터 객체를 쿼리 문자열변환하기 위해 사용
 
 ## 폴더 구조
 
 ```sh
 src
- ├─ common
- │     ├─ api
- │     ├─ bridge
- │     ├─ constant
- │     └─ util
  ├─ component
  │     ├─ common
  │     │     ├─ Loader
