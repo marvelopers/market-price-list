@@ -1,21 +1,30 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import LikePage from './components/LikePage';
-import MarketPage from './components/MarketPage';
+import HomePage from './components/page/HomePage';
+import LikePage from './components/page/LikePage';
+import MarketPage from './components/page/MarketPage';
+import { MenuType } from './constants/menu';
 
 const RoutesMenus = [
   {
-    key: 'market',
+    key: `home`,
+    name: 'home',
+    path: `/`,
+    url: () => `/`,
+    component: HomePage,
+  },
+  {
+    key: `${MenuType.MarKet}`,
     name: '오늘의 시세',
-    path: '/market',
-    url: () => '/market',
+    path: `/${MenuType.MarKet}`,
+    url: () => `/${MenuType.MarKet}`,
     component: MarketPage,
   },
   {
-    key: 'like',
+    key: `${MenuType.Like}`,
     name: '오늘의 시세',
-    path: '/like',
-    url: () => '/like',
+    path: `/${MenuType.Like}`,
+    url: () => `/${MenuType.Like}`,
     component: LikePage,
   },
 ];
