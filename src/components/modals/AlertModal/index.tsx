@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { AlertModalParams, ModalDuration, ModalType } from 'src/constants/modal';
 import { ModalHandler } from 'src/utils/ModalHandler';
-import { ModalWrapper } from '../ModalWrapper';
+import { ModalWrapper } from 'src/components/modals/ModalWrapper';
 import * as Styles from './styles';
 
 const ALERT_SHOWING_TIME = 1000;

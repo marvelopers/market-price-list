@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { GREY_2, GREY_5 } from 'src/styles/colors';
-import { Button } from '../../common/Button';
+import { Button } from 'src/components/common/Button';
 
 export const Wrapper = styled.div`
   max-width: 1280px;

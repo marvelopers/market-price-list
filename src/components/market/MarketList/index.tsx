@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectCurrencyType, selectLikeCoin } from 'src/selectors/market';
 import { CoinType } from 'src/model/market';
 import useGetLoadMore from 'src/hook/useGetLoadMore';
-import MarketListItem from '../MarketListItem';
+import MarketListItem from 'src/components/market/MarketListItem';
 import * as Styles from './styles';
 
 interface MarketListProps {

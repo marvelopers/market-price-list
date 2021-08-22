@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { ModalHandler } from 'src/utils/ModalHandler';
 import { ModalType } from 'src/constants/modal';
-import Layout from '../Layout';
+import Layout from 'src/components/Layout';
 
 const HomePage = () => {
   const showAlert = () => {

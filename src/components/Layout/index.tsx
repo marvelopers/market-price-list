@@ -1,7 +1,7 @@
 import React from 'react';
-import { MenuBar } from '../common/MenuBar';
-import MarketListHead from '../market/MarketListHead';
-import SelectCurrency from '../market/SelectCurrency';
+import { MenuBar } from 'src/components/common/MenuBar';
+import MarketListHead from 'src/components/market/MarketListHead';
+import SelectCurrency from 'src/components/market/SelectCurrency';
 
 const Layout = () => (
   <>

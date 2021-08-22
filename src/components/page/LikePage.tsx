@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { selectLikeCoin } from 'src/selectors/market';
 import { useSelector } from 'react-redux';
-import Layout from '../Layout';
-import MarketList from '../market/MarketList';
+import { selectLikeCoin } from 'src/selectors/market';
+import Layout from 'src/components/Layout';
+import MarketList from 'src/components/market/MarketList';
 
 const LikePage = () => {
   const LikeCoin = useSelector(selectLikeCoin);

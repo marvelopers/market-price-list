@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { CoinType } from 'src/model/market';
-import { CurrencyType } from 'src/constants/currency';
 import useGetCoinLikeClick from 'src/hook/useGetCoinLikeClick';
 import useGetCoinNameClick from 'src/hook/useGetCoinNameClick';
-
+import { CoinType } from 'src/model/market';
+import { CurrencyType } from 'src/constants/currency';
 import { GREY_5 } from 'src/styles/colors';
-import CoinName from './CoinName';
-import Percentage from './Percentage';
-import Price from './Price';
-import StarIcon from '../icons/StarIcon';
-import { Button } from '../common/Button';
+import { Button } from 'src/components/common/Button';
+import StarIcon from 'src/components/icons/StarIcon';
+import CoinName from 'src/components/market/CoinName';
+import Percentage from 'src/components/market/Percentage';
+import Price from 'src/components/market/Price';
 
 interface MarketListItemProps {
   coin: CoinType;

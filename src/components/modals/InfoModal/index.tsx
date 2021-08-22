@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
+import { ModalWrapper } from 'src/components/modals/ModalWrapper';
 import { InfoModalParams, ModalType, ModalDuration } from 'src/constants/modal';
 import { ModalHandler } from 'src/utils/ModalHandler';
-import { ModalWrapper } from '../ModalWrapper';
 import * as Styles from './styles';
 
 interface InfoModalProps {

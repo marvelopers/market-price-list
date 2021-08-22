@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 import { getMarketPrice } from 'src/features/market/marketSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMarket } from 'src/selectors';
-import Layout from '../Layout';
-import MarketList from '../market/MarketList';
-import Loader from '../common/Loader';
+import Loader from 'src/components/common/Loader';
+import Layout from 'src/components/Layout';
+import MarketList from 'src/components/market/MarketList';
 
 const MarketPage = () => {
   const dispatch = useDispatch();
