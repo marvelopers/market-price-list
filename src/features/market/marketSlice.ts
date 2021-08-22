@@ -80,7 +80,7 @@ const MarketSlice = createSlice({
     },
     likeCoin: {
       reducer: (state, action: PayloadAction<CoinType>) => {
-        state.LikeCoin = [...state.LikeCoin, action.payload];
+        state.LikeCoin = [...state.LikeCoin, action.payload].sort((a, b) => a.market_cap_rank - b.market_cap_rank);
       },
       prepare: (coin: CoinType) => ({ payload: coin }),
     },
