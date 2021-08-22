@@ -2,11 +2,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { CoinType } from 'src/model/market';
 import { CurrencyType } from 'src/constants/currency';
-import useGetCoinClick from 'src/hook/useGetCoinClick';
+import useGetCoinLikeClick from 'src/hook/useGetCoinLikeClick';
+import useGetCoinNameClick from 'src/hook/useGetCoinNameClick';
+
 import { GREY_5 } from 'src/styles/colors';
-import CoinName from '../CoinName';
-import Percentage from '../Percentage';
-import Price from '../Price';
+import CoinName from './CoinName';
+import Percentage from './Percentage';
+import Price from './Price';
 import StarIcon from '../icons/StarIcon';
 import { Button } from '../common/Button';
 
@@ -16,7 +18,8 @@ interface MarketListItemProps {
   likeCoin: boolean;
 }
 const MarketListItem = ({ coin, currency, likeCoin }: MarketListItemProps) => {
-  const { selected, handleClickLike, handleClickCoinName } = useGetCoinClick(coin, likeCoin);
+  const { handleClickCoinName } = useGetCoinNameClick();
+  const { selected, handleClickLike } = useGetCoinLikeClick(coin, likeCoin);
 
   return (
     <Wrapper>
