@@ -6,7 +6,6 @@ import { CoinType } from 'src/model/market';
 import { MarketPriceActions } from 'src/features/market/marketSlice';
 import { GREY_2, GREY_5 } from 'src/styles/colors';
 import MarketListItem from '../MarketListItem';
-import MarketListHead from '../MarketListHead';
 import { Button } from '../common/Button';
 
 interface MarketListProps {
@@ -28,7 +27,6 @@ const MarketList = ({ coinList }: MarketListProps) => {
 
   return (
     <Wrapper>
-      <MarketListHead />
       {coinList.map((coinPrice: CoinType) => (
         <MarketListItem
           key={coinPrice.id}
