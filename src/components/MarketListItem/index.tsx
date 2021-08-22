@@ -42,8 +42,8 @@ const Wrapper = styled.li`
   display: grid;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem;
-  grid-template-columns: 2.5rem 2fr 1fr 2fr repeat(3, 1fr) 2fr;
+  padding: 0.5rem 0.75rem;
+  grid-template-columns: 0.2fr 2fr 1fr 2fr repeat(3, 1fr) 2fr;
 `;
 
 const IconWrapper = styled(Button)``;
