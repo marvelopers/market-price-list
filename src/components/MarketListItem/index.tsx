@@ -1,11 +1,9 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { CoinType } from 'src/model/market';
-import { ModalHandler } from 'src/utils/ModalHandler';
-import { ModalType } from 'src/constants/modal';
 import { CurrencyType } from 'src/constants/currency';
-import { useDispatch } from 'react-redux';
-import { getCoinInfo, MarketPriceActions } from 'src/features/market/marketSlice';
+import useGetCoinClick from 'src/hook/useGetCoinClick';
+import { GREY_5 } from 'src/styles/colors';
 import CoinName from '../CoinName';
 import Percentage from '../Percentage';
 import Price from '../Price';
@@ -15,33 +13,10 @@ import { Button } from '../common/Button';
 interface MarketListItemProps {
   coin: CoinType;
   currency: CurrencyType;
+  likeCoin: boolean;
 }
-const MarketListItem = ({ coin, currency }: MarketListItemProps) => {
-  const dispatch = useDispatch();
-  const [selected, setSelected] = useState(false);
-  const alertMessage = useMemo(
-    () => `${coin.id} 북마크가 ${selected ? '해제' : '추가'}되었습니다.`,
-    [coin.id, selected],
-  );
-
-  const handleClickLike = useCallback(() => {
-    setSelected(!selected);
-    dispatch(MarketPriceActions.likeCoin(coin));
-    ModalHandler.show(ModalType.Alert, {
-      AlertMessage: alertMessage,
-    });
-  }, [alertMessage, coin, dispatch, selected]);
-
-  const handleClickCoinName = useCallback(
-    (coinName: string) => {
-      dispatch(getCoinInfo(coinName));
-      ModalHandler.show(ModalType.Info, {
-        title: `${coinName}`,
-        contents: <CoinName text="coin" />,
-      });
-    },
-    [dispatch],
-  );
+const MarketListItem = ({ coin, currency, likeCoin }: MarketListItemProps) => {
+  const { selected, handleClickLike, handleClickCoinName } = useGetCoinClick(coin, likeCoin);
 
   return (
     <Wrapper>
@@ -63,15 +38,12 @@ export default MarketListItem;
 
 const Wrapper = styled.li`
   height: 40px;
-  border: 1px solid purple;
-  /* display: grid; */
-
-  div {
-    display: inline-block;
-    min-width: 150px;
-  }
+  border-bottom: 1px solid ${GREY_5};
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  grid-template-columns: 2.5rem 2fr 1fr 2fr repeat(3, 1fr) 2fr;
 `;
 
-const IconWrapper = styled(Button)`
-  display: inline-block;
-`;
+const IconWrapper = styled(Button)``;
