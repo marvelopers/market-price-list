@@ -14,7 +14,7 @@ export interface AlertModalParams {
 
 export interface InfoModalParams {
   title: string;
-  contents: React.ReactNode;
+  contents: string;
   cancelText?: string;
   onClose?: () => void;
   onInfo?: () => void;
