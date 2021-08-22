@@ -1,19 +1,22 @@
 import styled from '@emotion/styled';
-import { GREY_2 } from 'src/styles/colors';
+import { BACKGROUND_GREY, GREY_2, GREY_3 } from 'src/styles/colors';
 
 export const Wrapper = styled.div`
   text-align: right;
   padding-right: 1.5rem;
   color: ${GREY_2};
-  border: none;
+  padding-bottom: 8px;
 `;
 
 export const List = styled.select`
-  width: 100px;
+  max-width: 120px;
   height: 40px;
   border: none;
-  background-color: transparent;
-  color: ${GREY_2};
+  background-color: ${BACKGROUND_GREY};
+  border-radius: 0.25rem;
+  padding: 0.25rem 1.5rem;
+  color: ${GREY_3};
+  font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.25rem;
   cursor: pointer;
