@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CurrencyType } from 'src/constants/currency';
-import { CoinDescription, CoinType, Localization, OrderType } from 'src/model/market';
+import { CoinDescription, CoinInfo, CoinType, OrderType } from 'src/model/market';
 import { marketApi } from 'src/utils/api/marketApi';
 
 const DEFAULT_LIMIT = 50;
@@ -21,8 +21,9 @@ export interface MarketState {
 }
 
 interface CoinInfoModal {
-  localization: CoinDescription;
-  description: CoinDescription;
+  coinId: string;
+  localization?: CoinDescription;
+  description?: CoinDescription;
 }
 
 const initParams: Params = {
@@ -33,33 +34,8 @@ const initParams: Params = {
   price_change_percentage: '1h,24h,7d',
 };
 
-const initInfo = {
-  [Localization.En]: '',
-  [Localization.De]: '',
-  [Localization.Es]: '',
-  [Localization.Fr]: '',
-  [Localization.It]: '',
-  [Localization.Pl]: '',
-  [Localization.Ro]: '',
-  [Localization.Hu]: '',
-  [Localization.Nl]: '',
-  [Localization.Pt]: '',
-  [Localization.Sv]: '',
-  [Localization.Vi]: '',
-  [Localization.Tr]: '',
-  [Localization.Ru]: '',
-  [Localization.Ja]: '',
-  [Localization.Zh]: '',
-  [Localization.Zh_tw]: '',
-  [Localization.Ko]: '',
-  [Localization.Ar]: '',
-  [Localization.Th]: '',
-  [Localization.Id]: '',
-};
-
-const initCoinInfo = {
-  localization: initInfo,
-  description: initInfo,
+const initCoinInfo: CoinInfoModal = {
+  coinId: '',
 };
 
 const initialState: MarketState = {
@@ -108,8 +84,15 @@ const MarketSlice = createSlice({
       },
       prepare: (coin: CoinType) => ({ payload: coin }),
     },
+    unlikeCoin: {
+      reducer: (state, action: PayloadAction<CoinType>) => {
+        state.LikeCoin = state.LikeCoin.filter((coin) => coin.id !== action.payload.id);
+      },
+      prepare: (coin: CoinType) => ({ payload: coin }),
+    },
     loadMore: {
       reducer: (state, action: PayloadAction<boolean>) => {
+        state.coinInfo.coinId = '';
         state.params.page = action.payload ? state.params.page + 1 : state.params.page;
       },
       prepare: () => ({ payload: true }),
@@ -119,6 +102,12 @@ const MarketSlice = createSlice({
         state.params = action.payload;
       },
       prepare: () => ({ payload: initParams }),
+    },
+    resetCoinInfo: {
+      reducer: (state, action: PayloadAction<CoinInfoModal>) => {
+        state.coinInfo = action.payload;
+      },
+      prepare: () => ({ payload: initCoinInfo }),
     },
   },
   extraReducers: {
@@ -135,8 +124,9 @@ const MarketSlice = createSlice({
     [getCoinInfo.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [getCoinInfo.fulfilled.type]: (state, action: PayloadAction<any>) => {
-      state.isLoading = true;
+    [getCoinInfo.fulfilled.type]: (state, action: PayloadAction<CoinInfo>) => {
+      state.isLoading = false;
+      state.coinInfo.coinId = action.payload.id;
       state.coinInfo.localization = action.payload.localization;
       state.coinInfo.description = action.payload.description;
     },
