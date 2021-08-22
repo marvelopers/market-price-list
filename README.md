@@ -73,14 +73,14 @@ src
  │     ├─ useGetCoinNameClick : 코인정보 모달을 위한 hook
  │     └─ useGetLoadMore : 더보기 기능을 위한 hook
  ├─ model
- │	   └─ market
+ │     └─ market
  ├─ reducer
- │	   └─ index
+ │     └─ index
  ├─ selector
  │     ├─ index
- │	   └─ market
+ │     └─market
  ├─ store
- │	   └─ store
+ │     └─ store
  ├─ styles
  │     ├─ colors
  │     ├─ GlobalStyle
