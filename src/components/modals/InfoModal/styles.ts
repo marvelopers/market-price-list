@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 import { ModalDuration } from 'src/constants/modal';
-import { BACKGROUND_BLUE, WHITE } from 'src/styles/colors';
+import { BACKGROUND_BLUE, GREY_1, WHITE } from 'src/styles/colors';
 import { ZIndex } from 'src/styles/zIndex';
 import { Button } from 'src/components/common/Button';
 
@@ -17,7 +17,12 @@ export const Title = styled.h2`
 export const CloseButton = styled(Button)`
   width: 24px;
   height: 24px;
-  margin: 0 0 0 auto;
+  color: ${GREY_1};
+  font-size: 1rem;
+  line-height: 1.2rem;
+  padding: 0.25rem 1rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid ${GREY_1};
 `;
 
 export const IconWrapper = styled.div`
@@ -31,7 +36,7 @@ export const ModalHead = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 1.5rem;
   height: 58px;
   z-index: ${ZIndex.ModalContent};
   box-shadow: 0px 7px 12px rgba(231, 231, 231, 0.3);
@@ -39,7 +44,11 @@ export const ModalHead = styled.div`
 
 export const ModalContent = styled.div`
   background: ${WHITE};
-  overflow: scroll;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 1.5rem;
+  overflow-y: scroll;
+  padding: 2rem 1.5rem;
 `;
 
 export const ModalContainer = styled.div(
@@ -51,7 +60,7 @@ export const ModalContainer = styled.div(
     transform: translate(-50%, -50%);
     flex-direction: column;
     width: 600px;
-    height: 800px;
+    height: 680px;
     z-index: ${ZIndex.ModalContent};
     overflow: hidden;
     ${!isShow

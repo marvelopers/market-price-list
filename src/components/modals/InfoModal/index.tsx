@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { InfoModalParams, ModalType, ModalDuration } from 'src/constants/modal';
-import CloseIcon from 'src/components/icons/CloseIcon';
 import { ModalHandler } from 'src/utils/ModalHandler';
 import { ModalWrapper } from '../ModalWrapper';
 import * as Styles from './styles';
@@ -26,13 +25,9 @@ const InfoModal = ({ isModalOpen, modalParams, clearModalParams }: InfoModalProp
       <Styles.ModalContainer isShow={isModalOpen}>
         <Styles.ModalHead>
           <Styles.Title>{modalParams?.title}</Styles.Title>
-          <Styles.CloseButton onClick={handleClose}>
-            <Styles.IconWrapper>
-              <CloseIcon />
-            </Styles.IconWrapper>
-          </Styles.CloseButton>
+          <Styles.CloseButton onClick={handleClose}>닫기</Styles.CloseButton>
         </Styles.ModalHead>
-        <Styles.ModalContent>{modalParams?.contents}</Styles.ModalContent>
+        <Styles.ModalContent dangerouslySetInnerHTML={{ __html: `${modalParams?.contents}` }} />
       </Styles.ModalContainer>
     </ModalWrapper>
   );
