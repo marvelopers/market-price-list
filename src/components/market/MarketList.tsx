@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectCurrencyType, selectLikeCoin } from 'src/selectors/market';
 import { CoinType } from 'src/model/market';
-import { MarketPriceActions } from 'src/features/market/marketSlice';
 import { GREY_2, GREY_5 } from 'src/styles/colors';
-import MarketListItem from '../MarketListItem';
+import useGetLoadMore from 'src/hook/useGetLoadMore';
+import MarketListItem from './MarketListItem';
 import { Button } from '../common/Button';
 
 interface MarketListProps {
@@ -13,17 +13,11 @@ interface MarketListProps {
 }
 
 const MarketList = ({ coinList }: MarketListProps) => {
-  const dispatch = useDispatch();
   const currencyType = useSelector(selectCurrencyType);
-  const hasMore = useMemo(() => coinList.length !== 0 && coinList.length % 50 === 0, [coinList.length]);
-
   const likeCoin = useSelector(selectLikeCoin);
   const likeCoinIds = useMemo(() => likeCoin.map((coin) => coin.id), [likeCoin]);
-
-  const handleClickLoadMore = useCallback(
-    () => (hasMore ? dispatch(MarketPriceActions.loadMore()) : null),
-    [dispatch, hasMore],
-  );
+  const hasMore = useMemo(() => coinList.length !== 0 && coinList.length % 50 === 0, [coinList.length]);
+  const handleClickLoadMore = useGetLoadMore(hasMore);
 
   return (
     <Wrapper>

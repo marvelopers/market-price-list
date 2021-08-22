@@ -17,6 +17,7 @@ interface MarketListItemProps {
   currency: CurrencyType;
   likeCoin: boolean;
 }
+
 const MarketListItem = ({ coin, currency, likeCoin }: MarketListItemProps) => {
   const { handleClickCoinName } = useGetCoinNameClick();
   const { selected, handleClickLike } = useGetCoinLikeClick(coin, likeCoin);
