@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react';
-import styled from '@emotion/styled';
 import { useSelector } from 'react-redux';
 import { selectCurrencyType, selectLikeCoin } from 'src/selectors/market';
 import { CoinType } from 'src/model/market';
-import { GREY_2, GREY_5 } from 'src/styles/colors';
 import useGetLoadMore from 'src/hook/useGetLoadMore';
-import MarketListItem from './MarketListItem';
-import { Button } from '../common/Button';
+import MarketListItem from '../MarketListItem';
+import * as Styles from './styles';
 
 interface MarketListProps {
   coinList: CoinType[];
@@ -20,7 +18,7 @@ const MarketList = ({ coinList }: MarketListProps) => {
   const handleClickLoadMore = useGetLoadMore(hasMore);
 
   return (
-    <Wrapper>
+    <Styles.Wrapper>
       {coinList.map((coinPrice: CoinType) => (
         <MarketListItem
           key={coinPrice.id}
@@ -30,33 +28,12 @@ const MarketList = ({ coinList }: MarketListProps) => {
         />
       ))}
       {hasMore && (
-        <ButtonWrapper>
-          <LoadMore onClick={handleClickLoadMore}>더보기</LoadMore>
-        </ButtonWrapper>
+        <Styles.ButtonWrapper>
+          <Styles.LoadMore onClick={handleClickLoadMore}>더보기</Styles.LoadMore>
+        </Styles.ButtonWrapper>
       )}
-    </Wrapper>
+    </Styles.Wrapper>
   );
 };
 
 export default MarketList;
-
-const Wrapper = styled.div`
-  max-width: 1280px;
-  margin: auto;
-`;
-
-const ButtonWrapper = styled.div`
-  border-bottom: 1px solid ${GREY_5};
-  max-width: 1280px;
-  height: 40px;
-  margin: auto;
-  text-align: center;
-`;
-
-const LoadMore = styled(Button)`
-  padding: 0.6rem 3rem;
-  margin: 2px auto;
-  color: ${GREY_2};
-  font-size: 1rem;
-  font-weight: 600;
-`;
