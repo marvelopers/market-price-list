@@ -1,5 +1,6 @@
+import { injectGlobal } from '@emotion/css';
 import { css, Global } from '@emotion/react';
-import React from 'react';
+import fonts from 'src/styles/fonts';
 import { GREY_1 } from './colors';
 
 export const inheritFont = css`
@@ -141,6 +142,23 @@ export const ResetStyles = css`
     box-sizing: border-box;
     -ms-overflow-style: none;
     font-size: inherit;
+  }
+
+  *:focus {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+  }
+`;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+injectGlobal`
+  ${fonts}
+  :root {
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-bottom: calc(env(safe-area-inset-bottom) * 0.5);
+    --screen-height: calc(100vh - var(--safe-area-inset-bottom));
   }
 `;
 
